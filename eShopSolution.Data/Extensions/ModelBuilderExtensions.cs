@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using eShopSolution.Data.Entities;
 using eShopSolution.Data.Entities.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace eShopSolution.Data.Extensions
@@ -123,6 +124,40 @@ namespace eShopSolution.Data.Extensions
             modelBuilder.Entity<ProductInCategory>().HasData(
                 new ProductInCategory() { ProductId = 1, CaterogyId = 1 }
                 );
+
+            // any guid
+
+            var roleId = new Guid("62553E08-1BA1-475F-A059-003E621285ED");
+            var adminId = new Guid("860EFB43-C1EA-4FED-B9BE-DF1B4F37BCAB");
+            modelBuilder.Entity<AppRole>().HasData(new AppRole()
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
+
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser()
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "vinhtong@elandvn.com",
+                NormalizedEmail = "vinhtong@elandvn.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
+                SecurityStamp = string.Empty,
+                FirstName = "Eland",
+                LastName = "CuChi",
+                Dob = new DateTime(2020, 01, 31)
+            });
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
         }
     }
 }
