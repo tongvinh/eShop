@@ -3,7 +3,6 @@ using eShopSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace eShopSolution.BackendApi.Controllers
 {
@@ -32,6 +31,7 @@ namespace eShopSolution.BackendApi.Controllers
             {
                 return BadRequest("Username or password is incorrect");
             }
+
             // return Ok(new { token = resultToken });
             return Ok(resultToken);
         }
@@ -54,7 +54,6 @@ namespace eShopSolution.BackendApi.Controllers
         }
 
         //http://localhost/api/users/paging?pageIndex=1&pageSize=10&Keyword=...
-
         [HttpGet("paging")]
         public async Task<IActionResult> GetAllPaging([FromQuery] GetUserPagingRequest request)
         {
