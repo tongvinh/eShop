@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,14 +47,17 @@ namespace eShopSolution.Application.System.Users
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.FirstName),
                 new Claim(ClaimTypes.Role, string.Join(";", roles)),
+                new Claim(ClaimTypes.Name,request.UserName),
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
             // ReSharper disable once IdentifierTypo
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(_config["Tokens:Issuer"],
+            var token = new JwtSecurityToken(
                 _config["Tokens:Issuer"],
-                claims, expires: DateTime.Now.AddHours(3),
+                _config["Tokens:Issuer"],
+                claims,
+                expires: DateTime.Now.AddHours(3),
                 signingCredentials: creds);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
