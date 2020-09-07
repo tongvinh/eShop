@@ -35,11 +35,6 @@ namespace eShopSolution.AdminApp
                 fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>()
                 );
 
-            services.AddSession(option =>
-            {
-                option.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
-
             services.AddTransient<IUserApiClient, UserApiClient>();
 
             var builder = services.AddRazorPages();
@@ -73,8 +68,6 @@ namespace eShopSolution.AdminApp
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
