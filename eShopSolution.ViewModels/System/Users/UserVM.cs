@@ -4,7 +4,7 @@ using System.Text;
 
 namespace eShopSolution.ViewModels.System.Users
 {
-    public class UserVM
+    public class UserVm
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

@@ -36,7 +36,7 @@ namespace eShopSolution.AdminApp.Services
             return await token;
         }
 
-        public async Task<PagedResult<UserVM>> GetUserPaging(GetUserPagingRequest request)
+        public async Task<PagedResult<UserVm>> GetUsersPagings(GetUserPagingRequest request)
         {
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
@@ -45,8 +45,21 @@ namespace eShopSolution.AdminApp.Services
             var response = await client.GetAsync($"/api/users/paging?pageIndex=" +
                                                  $"{request.PageIndex}&pageSize={request.PageSize}&keyword={request.Keyword}");
             var body = await response.Content.ReadAsStringAsync();
-            var users = JsonConvert.DeserializeObject<PagedResult<UserVM>>(body);
+            var users = JsonConvert.DeserializeObject<PagedResult<UserVm>>(body);
             return users;
+        }
+
+        public async Task<bool> RegisterUser(RegisterRequest request)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_configuration["BaseAddress"]);
+
+            var json = JsonConvert.SerializeObject(request);
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync($"/api/users", httpContent);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

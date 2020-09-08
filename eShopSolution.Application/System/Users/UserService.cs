@@ -80,7 +80,7 @@ namespace eShopSolution.Application.System.Users
             return result.Succeeded;
         }
 
-        public async Task<PagedResult<UserVM>> GetUsersPaging(GetUserPagingRequest request)
+        public async Task<PagedResult<UserVm>> GetUsersPaging(GetUserPagingRequest request)
         {
             var query = _userManager.Users;
             if (!string.IsNullOrEmpty(request.Keyword))
@@ -93,7 +93,7 @@ namespace eShopSolution.Application.System.Users
 
             var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize)
-                .Select(x => new UserVM()
+                .Select(x => new UserVm()
                 {
                     Email = x.Email,
                     FirstName = x.FirstName,
@@ -104,7 +104,7 @@ namespace eShopSolution.Application.System.Users
                 }).ToListAsync();
 
             // Select and projection
-            var pagedResult = new PagedResult<UserVM>()
+            var pagedResult = new PagedResult<UserVm>()
             {
                 TotalRecord = totalRow,
                 Items = data
