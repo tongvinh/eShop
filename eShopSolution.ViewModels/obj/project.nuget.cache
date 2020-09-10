@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "9ySQO9MU5hGgRWZHr6fbOEwawfeR4TQayN2HL80TuwwTJSoFpMeKrS6ah/dGLbZgitKK5hp62lG5gvn+24eZnA==",
+  "success": true,
+  "projectFilePath": "E:\\Project\\ASP.NET CORE\\eShop\\eShopSolution.ViewModels\\eShopSolution.ViewModels.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\VinhTong\\.nuget\\packages\\fluentvalidation\\9.2.0\\fluentvalidation.9.2.0.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.2.0\\fluentvalidation.aspnetcore.9.2.0.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.2.0\\fluentvalidation.dependencyinjectionextensions.9.2.0.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.7\\microsoft.aspnetcore.http.features.3.1.7.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.7\\microsoft.extensions.primitives.3.1.7.nupkg.sha512",
+    "C:\\Users\\VinhTong\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -114,5 +114,21 @@ namespace eShopSolution.AdminApp.Services
 
             return JsonConvert.DeserializeObject<ApiErrorResult<UserVm>>(body);
         }
+
+        public async Task<ApiResult<bool>> DeleteUser(Guid id)
+        {
+            var session = _httpContextAccessor.HttpContext.Session.GetString("Token");
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_configuration["BaseAddress"]);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session);
+            var response = await client.DeleteAsync($"/api/users/{id}");
+            var body = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<ApiSuccessResult<bool>>(body);
+            }
+
+            return JsonConvert.DeserializeObject<ApiErrorResult<bool>>(body);
+        }
     }
 }
