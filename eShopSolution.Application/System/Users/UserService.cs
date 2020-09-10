@@ -170,5 +170,20 @@ namespace eShopSolution.Application.System.Users
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
+
+        public async Task<ApiResult<bool>> Delete(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("user không tồn tại");
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return new ApiSuccessResult<bool>();
+            }
+            return new ApiErrorResult<bool>("Xoá không thành công");
+        }
     }
 }
