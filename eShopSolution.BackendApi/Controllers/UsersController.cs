@@ -30,7 +30,7 @@ namespace eShopSolution.BackendApi.Controllers
             var result = await _userService.Authenticate(request);
             if (string.IsNullOrEmpty(result.ResultObj))
             {
-                return BadRequest("Username or password is incorrect");
+                return BadRequest(result);
             }
 
             // return Ok(new { token = resultToken });
