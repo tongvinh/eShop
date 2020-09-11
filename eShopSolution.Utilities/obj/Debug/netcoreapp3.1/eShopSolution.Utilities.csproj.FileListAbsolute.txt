@@ -6,3 +6,4 @@ E:\Project\ASP.NET CORE\eShop\eShopSolution.Utilities\obj\Debug\netcoreapp3.1\eS
 E:\Project\ASP.NET CORE\eShop\eShopSolution.Utilities\obj\Debug\netcoreapp3.1\eShopSolution.Utilities.csproj.CoreCompileInputs.cache
 E:\Project\ASP.NET CORE\eShop\eShopSolution.Utilities\obj\Debug\netcoreapp3.1\eShopSolution.Utilities.dll
 E:\Project\ASP.NET CORE\eShop\eShopSolution.Utilities\obj\Debug\netcoreapp3.1\eShopSolution.Utilities.pdb
+E:\Project\ASP.NET CORE\eShop\eShopSolution.Utilities\obj\Debug\netcoreapp3.1\eShopSolution.Utilities.csprojAssemblyReference.cache
