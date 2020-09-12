@@ -19,15 +19,14 @@ namespace eShopSolution.Application.System.Users
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-
-        // private readonly RoleManager<AppRole> _roleManager;
+        /*private readonly RoleManager<AppRole> _roleManager;*/
         private readonly IConfiguration _config;
 
         public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, /*RoleManager<AppRole> roleManager,*/ IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            // _roleManager = roleManager;
+            /*_roleManager = roleManager;*/
             _config = config;
         }
 
@@ -136,7 +135,7 @@ namespace eShopSolution.Application.System.Users
                     LastName = x.LastName,
                     Id = x.Id,
                     PhoneNumber = x.PhoneNumber,
-                    UserName = x.UserName
+                    UserName = x.UserName,
                 }).ToListAsync();
 
             // Select and projection
@@ -158,6 +157,7 @@ namespace eShopSolution.Application.System.Users
                 return new ApiErrorResult<UserVm>("User không tồn tại");
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
             var userVm = new UserVm()
             {
                 Email = user.Email,
@@ -166,7 +166,8 @@ namespace eShopSolution.Application.System.Users
                 Dob = user.Dob,
                 Id = user.Id,
                 LastName = user.LastName,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Roles = roles
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
@@ -184,6 +185,36 @@ namespace eShopSolution.Application.System.Users
                 return new ApiSuccessResult<bool>();
             }
             return new ApiErrorResult<bool>("Xoá không thành công");
+        }
+
+        public async Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("Tài khoản không tồn tại");
+            }
+
+            var removedRoles = request.Roles.Where(x => x.Selected == false).Select(x => x.Name).ToList();
+            foreach (var roleName in removedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == true)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, roleName);
+                }
+            }
+            await _userManager.RemoveFromRolesAsync(user, removedRoles);
+
+            var addedRoles = request.Roles.Where(x => x.Selected).Select(x => x.Name).ToList();
+            foreach (var roleName in addedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == false)
+                {
+                    await _userManager.AddToRoleAsync(user, roleName);
+                }
+            }
+
+            return new ApiSuccessResult<bool>();
         }
     }
 }

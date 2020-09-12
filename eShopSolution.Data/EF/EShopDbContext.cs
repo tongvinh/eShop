@@ -18,7 +18,6 @@ namespace eShopSolution.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             //Configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
 
@@ -41,7 +40,7 @@ namespace eShopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
-            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.RoleId, x.UserId });
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
 
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
@@ -55,7 +54,6 @@ namespace eShopSolution.Data.EF
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<AppConfig> AppConfigs { get; set; }
-
 
         public DbSet<Cart> Carts { get; set; }
 
@@ -71,7 +69,5 @@ namespace eShopSolution.Data.EF
         public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<ProductImage> ProductImages { get; set; }
-
-
     }
 }
