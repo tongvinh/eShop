@@ -4,7 +4,7 @@ using System.Text;
 
 namespace eShopSolution.Utilities.Constants
 {
-    public class SystemConstans
+    public class SystemConstants
     {
         public const string MainConnectionString = "eShopSolutionDb";
     }

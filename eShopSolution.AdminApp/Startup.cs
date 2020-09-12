@@ -30,7 +30,7 @@ namespace eShopSolution.AdminApp
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/Login/Index";
-                options.AccessDeniedPath = "/Account/Forbidden";
+                options.AccessDeniedPath = "/User/Forbidden";
             });
 
             services.AddControllersWithViews().AddFluentValidation(
@@ -45,6 +45,7 @@ namespace eShopSolution.AdminApp
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IUserApiClient, UserApiClient>();
+            services.AddTransient<IRoleApiClient, RoleApiClient>();
 
             var builder = services.AddRazorPages();
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

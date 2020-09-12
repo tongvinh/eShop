@@ -410,3 +410,4 @@ E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eSh
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.pdb
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.genruntimeconfig.cache
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Delete.cshtml.g.cs
+E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\RoleAssign.cshtml.g.cs
