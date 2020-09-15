@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
+using eShopSolution.Application.System.Languages;
 
 namespace eShopSolution.BackendApi
 {
@@ -51,6 +52,8 @@ namespace eShopSolution.BackendApi
             services.AddTransient<IUserService, UserService>();
 
             services.AddTransient<IRoleService, RoleService>();
+
+            services.AddTransient<ILanguageServices, LanguageService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
