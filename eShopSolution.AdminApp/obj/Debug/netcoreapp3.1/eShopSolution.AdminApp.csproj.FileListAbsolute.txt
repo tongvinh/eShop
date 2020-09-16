@@ -414,3 +414,5 @@ E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Raz
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\eShopSolution.Utilities.dll
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\eShopSolution.Utilities.pdb
 E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navigation\Default.cshtml.g.cs
+E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
+E:\Project\ASP.NET CORE\eShop\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\Create.cshtml.g.cs
