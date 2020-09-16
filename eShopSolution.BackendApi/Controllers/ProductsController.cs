@@ -23,9 +23,15 @@ namespace eShopSolution.BackendApi.Controllers
         [HttpGet("{languageId}")]
         // 1. request lấy từ From query
         //2. return Ok trả về status 200
-        public async Task<IActionResult> GetPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
+        /*public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
         {
             var product = await _productService.GetAllByCategoryId(languageId, request);
+            return Ok(product);
+        }*/
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetManageProductPagingRequest request)
+        {
+            var product = await _productService.GetAllPaging(request);
             return Ok(product);
         }
 
@@ -42,6 +48,7 @@ namespace eShopSolution.BackendApi.Controllers
         }
 
         [HttpPost]
+        [Consumes("multipart/form-data")] // cho phép nhận kểu dữ liệu truyền lên là 1 form-data
         // 1. request lấy từ From body do là httpPost
         public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
